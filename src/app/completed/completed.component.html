@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<br>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel *ngFor="let task of completedTask">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{task.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{task.description}}
+        <mat-icon>edit</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <button mat-raised-button color="warn" type="button" [disabled]="true">Delted Tasks</button>
+
+  </mat-expansion-panel>
+ </mat-accordion>

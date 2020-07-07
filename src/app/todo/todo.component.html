@@ -1,0 +1,49 @@
+<app-navbar [parentData]="heading"></app-navbar>
+<br>
+
+<div class="form">
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Add title of task</mat-label>
+    <input matInput placeholder="to do work" #title>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Add description of task</mat-label>
+    <input matInput placeholder="to do work" #description>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="button" (click)="addNewTask(title.value , description.value) ; title.value = ''; description.value =''">Submit</button>
+</form>
+</div>
+
+<br>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel *ngFor="let task of todo">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{task.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{task.description}}
+        <mat-icon>edit</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" value={{task.title}} [disabled]="task.isEdit" #editedTitle>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>description</mat-label>
+      <input matInput type="text" value={{task.description}} [disabled]="task.isEdit" #editeddescription>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" (click)="completedTodo(task)">Mark as completed</button>
+    <button mat-raised-button color="primary" type="button" (click)="task.isEdit =  !task.isEdit" [disabled]="!task.isEdit" >Edit</button>
+    <button mat-raised-button color="primary" type="button"  [disabled]="task.isEdit" (click)="edit(editedTitle.value , editeddescription.value , task); task.isEdit = !task.isEdit" >Save changes</button>
+    <button mat-raised-button color="warn" type="button" (click)="deletedTodo(task)">Delete this task</button>
+
+
+  </mat-expansion-panel>
+ </mat-accordion>
