@@ -41,7 +41,7 @@
 
     <button mat-raised-button color="primary" type="button" (click)="completedTodo(task)">Mark as completed</button>
     <button mat-raised-button color="primary" type="button" (click)="task.isEdit =  !task.isEdit" [disabled]="!task.isEdit" >Edit</button>
-    <button mat-raised-button color="primary" type="button"  [disabled]="task.isEdit" (click)="edit(editedTitle.value , editeddescription.value , task); task.isEdit = !task.isEdit" >Save changes</button>
+    <button mat-raised-button color="primary" type="button"  [disabled]="task.isEdit" (click)="edit(editedTitle.value , editeddescription.value , task); task.isEdit = task.isEdit" >Save changes</button>
     <button mat-raised-button color="warn" type="button" (click)="deletedTodo(task)">Delete this task</button>
 
 
